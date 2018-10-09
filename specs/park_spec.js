@@ -10,6 +10,7 @@ describe('Park', function(){
     park = new Park('Disneyland', 20, [])
     dinosaur1 = new Dinosaur('T-Rex', 'Carnivore', 100)
     dinosaur2 = new Dinosaur('Stegosaurus', 'Herbivore', 80)
+    dinosaur3 = new Dinosaur('Velociraptor', 'Carnivore', 65)
   })
 
   it('should have a name', function(){
@@ -50,9 +51,9 @@ describe('Park', function(){
   it('should find the dinosaur that attracts the most visitors', function(){
     park.addDinosaur(dinosaur1)
     park.addDinosaur(dinosaur2)
-    const actual = dinosaur1
-    const expected = park.mostVisitors()
-    assert.deepStrictEqual(actual, expected)
+    park.addDinosaur(dinosaur3)
+    const actual = park.mostVisitors()
+    assert.strictEqual(actual, dinosaur1)
   })
 
   xit('should fiind all dinosaurs of a particular species', function(){
