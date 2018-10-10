@@ -58,5 +58,14 @@ Park.prototype.yearlyIncome = function () {
 };
 
 
+Park.prototype.kill = function (species) {
+  for(let i = this.dinosaurs.length -1; i >= 0; i--){
+    let dino = this.dinosaurs[i];
+    if(dino.species.toLowerCase() === species.toLowerCase()){
+      this.dinosaurs.splice(i, 1);
+    }
+  }
+};
+
 
 module.exports = Park

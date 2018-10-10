@@ -91,7 +91,11 @@ describe('Park', function(){
   })
 
   it('should remove all dinosaurs of a particular species', function(){
-
+    park.addDinosaur(dinosaur1)
+    park.addDinosaur(dinosaur2)
+    park.addDinosaur(dinosaur3)
+    park.kill("stegosaurus");
+    assert.strictEqual(2, park.dinosaurs.length);
   })
 
 })
