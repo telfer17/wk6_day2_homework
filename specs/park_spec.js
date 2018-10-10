@@ -5,12 +5,14 @@ const Dinosaur = require('../dinosaur.js')
 describe('Park', function(){
 
   let park;
+  let dinosaur1, dinosaur2, dinosaur3;
 
   beforeEach(function(){
-    park = new Park('Disneyland', 20, [])
     dinosaur1 = new Dinosaur('T-Rex', 'Carnivore', 100)
     dinosaur2 = new Dinosaur('Stegosaurus', 'Herbivore', 80)
     dinosaur3 = new Dinosaur('Velociraptor', 'Carnivore', 65)
+
+    park = new Park('Disneyland', 10)
   })
 
   it('should have a name', function(){
@@ -20,7 +22,7 @@ describe('Park', function(){
 
   it('should have a price', function(){
     const actual = park.price;
-    assert.strictEqual(20, actual);
+    assert.strictEqual(10, actual);
   });
 
   it('should have a collection of dinosaurs', function(){
@@ -56,19 +58,39 @@ describe('Park', function(){
     assert.strictEqual(actual, dinosaur1)
   })
 
-  xit('should fiind all dinosaurs of a particular species', function(){
-
+  it('should find all dinosaurs of a particular species', function(){
+    park.addDinosaur(dinosaur1)
+    park.addDinosaur(dinosaur2)
+    park.addDinosaur(dinosaur3)
+    const stegosaurus = park.findAll("stegosaurus");
+    assert.deepStrictEqual([dinosaur2], stegosaurus);
   })
 
-  xit('should calculate the total number of visitors per day', function(){
-
+  it('should calculate the total number of visitors per day', function(){
+    park.addDinosaur(dinosaur1)
+    park.addDinosaur(dinosaur2)
+    park.addDinosaur(dinosaur3)
+    const visitors = park.dailyVisitors();
+    assert.strictEqual(245 ,visitors);
   })
 
-  xit('should calculate the total number of visitors per year', function(){
-
+  it('should calculate the total number of visitors per year', function(){
+    park.addDinosaur(dinosaur1)
+    park.addDinosaur(dinosaur2)
+    park.addDinosaur(dinosaur3)
+    const yearly_visitors = park.yearlyVisitors();
+    assert.strictEqual(89425, yearly_visitors);
   })
 
-  xit('should calculate the total revenue from ticket sales for one year', function(){
+  it('should calculate the total revenue from ticket sales for one year', function(){
+    park.addDinosaur(dinosaur1)
+    park.addDinosaur(dinosaur2)
+    park.addDinosaur(dinosaur3)
+    const income = park.yearlyIncome();
+    assert.strictEqual(894250 ,income);
+  })
+
+  it('should remove all dinosaurs of a particular species', function(){
 
   })
 
